@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Name of suite here" verbose="0"
+	   thread-count="1" preserve-order="true" parallel="false">
+
+	<parameter name="pdm.hostname" value="10.157.128.241" />
+	<parameter name="test.count" value="" />
+	<parameter name="configureEIB" value="true" />
+
+	<!-- ******************************* Test starts here ******************************** -->
+	<!--java -jar ./test-panprofile-18.4.0-SNAPSHOT.jar -&#45;&#45;pdm.hostname=localhost suite_file-->
+	<test verbose="0"
+		  name="Pan Profile">
+		<classes>
+			<class name="com.mastercard.atmn.test.panprofile.SchemaTests.ControlsTests">
+				<methods>
+					<include name ="addAndRetrieveDefaultControls"/>
+				</methods>
+			</class>
+		</classes>
+		
+<!-- 		<packages> -->
+<!--  			<package name="com.mastercard.atmn.test.panprofile"/>  -->
+<!-- 			<package name="com.mastercard.atmn.test.panprofile.EIBTests"/> -->
+<!--  			<package name="com.mastercard.atmn.test.panprofile.SchemaTests"/>  -->
+<!-- 		</packages>  -->
+	</test>
+
+
+
+	<listeners>
+		<listener class-name="com.mastercard.atmn.test.pdm.base.BaseExecutionListener" />
+		<listener class-name="com.mastercard.atmn.test.pdm.base.BaseSuiteListener" />
+		<listener class-name="com.mastercard.atmn.test.pdm.base.BaseTestListener" />
+		<listener class-name="com.mastercard.atmn.test.pdm.base.TestListener" />
+		<listener
+				class-name="com.mastercard.atmn.aon.ta.extent.tng.ExtentReporterTng" />
+		<listener
+				class-name="com.mastercard.atmn.test.pdm.base.reportng.EssReportNgHtmlReporter" />
+	</listeners>
+</suite>
